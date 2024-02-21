@@ -1,0 +1,465 @@
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>東急線在線情報</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="refresh" content="15">
+
+<style type="text/css">
+
+input.example1, select {
+width: 250px;
+}
+textarea {
+width: 250px;
+height: 7em;
+}
+
+input, select, textarea {
+background-color: #ffffff;
+}
+
+</style>
+
+  </head>
+
+
+  <body background="https://image.jimcdn.com/app/cms/image/transf/none/path/s1264ae553219b31b/image/i8b53721154d6e022/version/1708492959/image.png">
+
+
+<p>東横線(渋谷～横浜)　　　　　[更新間隔：15秒]</p>
+<nobr>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<nobr>
+
+<div style="position: absolute; top: 30px; left:190px; font-size:18pt"><p>渋　谷</p></div>
+<div id="ty01-3ad" style="position: absolute; top: -100px; left:-100px;"><input type="text" id="ty01-3a" disabled / name="address" size="14" value=""　></div>
+<div id="ty01-4ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty01-4a" disabled / name="address" size="14" value=""></div>
+<div id="ty01-5ad" style="position: absolute; top: -100px; left:-100px;"><input type="text" id = "ty01-5a" disabled / name="address" size="14" value=""　></div>
+<div id="ty01-6ad" style="position: absolute; top: -100px; left:-100px;"><input type="text" id = "ty01-6a" disabled / name="address" size="14" value=""　></div>
+
+<!渋谷-代官山>
+<div id="ty01-02d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty01-02" disabled / name="address" size="14" value=""　></div>
+<div id="ty02-01d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty02-01" disabled / name="address" size="14" value=""　></div>
+<div id="ty02p01d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty02p01" disabled / name="address" size="14" value=""　></div>
+
+<div style="position: absolute; top: 30px; left:610px; font-size:18pt"><p>代官山</p></div>
+<div id="ty02-1ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty02-1a" disabled / name="address" size="14" value=""　></div>
+<div id="ty02-2ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty02-2a" disabled / name="address" size="14" value=""　></div>
+
+<!代官山-中目黒>
+<div id="ty02-03d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty02-03" disabled / name="address" size="14" value=""　></div>
+<div id="ty03-02d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty03-02" disabled / name="address" size="14" value=""　></div>
+
+<div style="position: absolute; top: 30px; left:1030px; font-size:18pt"><p>中目黒</p></div>
+<div id="ty03-1ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty03-1a" disabled / name="address" size="14" value=""　></div>
+<div id="ty03-2ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty03-2a" disabled / name="address" size="14" value=""　></div>
+
+<!中目黒-祐天寺>
+<div id="ty03-04d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty03-04" disabled / name="address" size="14" value=""　></div>
+<div id="ty04-03d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty04-03" disabled / name="address" size="14" value=""　></div>
+
+<div style="position: absolute; top: 30px; left:1650px; font-size:18pt"><p>祐天寺</p></div>
+<div id="ty04-1ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty04-1a" disabled / name="address" size="14" value=""　></div>
+<div id="ty04-2ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty04-2a" disabled / name="address" size="14" value=""　></div>
+
+
+</nobr>
+
+
+<script type="module">
+      // data.jsonをjson形式で読み込んで「data」という名前で使いまわす
+      import data from "https://tokyu-tid.s3.amazonaws.com/toyoko.json" assert { type: "json" };
+      console.log(data);
+//在線情報の処理
+      let info = '';
+      let len = '';
+
+      let kind = '';
+      let unban = '';
+      let des = '';
+      let stid = '';
+      let scid = '';
+      let trid = '';
+      let sha = '';
+      let hensei = '';
+      let delay = '';
+
+      let n = 1;
+
+      len = JSON.stringify(data.trains.length) ;
+
+	let nameText = document.getElementById('ty01-3a');
+
+for ( n = 0; n < len; n++) {
+
+
+
+//種別設定
+      kind= JSON.stringify(data.trains[n].kind); 
+	switch (kind) {
+case '"普"':
+	kind = "各";
+	break;
+case '"急"':
+	kind = "急";
+	break;
+case '"特"':
+	kind = "特";
+	break;
+case '"通"':
+	kind = "通";
+	break;
+case '"Ｆ"':
+	kind = "Ｆ";
+	break;
+case '"回"':
+	kind = "回";
+	break;
+}
+
+//行先設定
+      des= JSON.stringify(data.trains[n].destination_station_code) ;
+	switch (des) {
+case '33':
+	des = "副";
+	break;
+case '67':
+	des = "南";
+	break;
+case '54':
+	des = "三";
+	break;
+case '42':
+	des = "比";
+	break;
+case '71':
+	des = "目";
+	break;
+case '73':
+	des = "小";
+	break;
+case '76':
+	des = "岡";
+	break;
+case '77':
+	des = "奥";
+	break;
+case '78':
+	des = "渋";
+	break;
+case '80':
+	des = "中";
+	break;
+case '81':
+	des = "祐";
+	break;
+case '84':
+	des = "自";
+	break;
+case '88':
+	des = "武";
+	break;
+case '89':
+	des = "住";
+	break;
+case '90':
+	des = "日";
+	break;
+case '93':
+	des = "菊";
+	break;
+case '98':
+	des = "横";
+	break;
+case '103':
+	des = "元";
+	break;
+case '108':
+	des = "新";
+	break;
+case '111':
+	des = "相";
+	break;
+case '129':
+	des = "蒲";
+	break;
+case '0':
+	des = "―";
+	break;
+}
+
+
+//運番設定
+      unban = JSON.stringify(data.trains[n].operation_number) ;
+	if (unban < 10){
+unban = "0" + unban + "K" ;
+} else if(unban < 99){
+unban = unban + "K" ;
+} else if(unban < 110){
+unban = "0" +(unban - 100) +  "M" ;
+} else if(unban < 199){
+unban = (unban - 100) + "M" ;
+} else if(unban < 210){
+unban = "0" + (unban - 200)  + "K" ;
+} else if(unban < 299){
+unban = (unban - 200) + "K" ;
+} else if(unban < 310){
+unban = "0" + (unban - 300)  + "S" ;
+} else if(unban < 399){
+unban = (unban - 300) + "S" ;
+} else if(unban < 410){
+unban = "0" + (unban - 400)  + "T" ;
+} else if(unban < 499){
+unban = (unban - 400) + "T" ;
+} else if(unban < 510){
+unban = "0" + (unban - 500)  + "M" ;
+} else if(unban < 599){
+unban =(unban - 500) + "M" ;
+} else if(unban < 610){
+unban = "0" + (unban - 600)  + "G" ;
+} else if(unban < 699){
+unban = (unban - 600) + "G" ;
+} else if(unban < 710){
+unban = "0" + (unban - 700)  + "S" ;
+} else if(unban < 799){
+unban = (unban - 700) + "S" ;
+} else if(unban < 810){
+unban = "0" + (unban - 800)  + "T" ;
+} else if(unban < 899){
+unban = (unban - 800) + "T" ;
+} else if(unban < 910){
+unban = "0" + (unban - 900)  + "G" ;
+} else if(unban < 999){
+unban = (unban - 900) + "G" ;
+}
+
+
+      stid= JSON.stringify(data.trains[n].station_id) ;
+      scid= JSON.stringify(data.trains[n].section_id) ;
+      trid= JSON.stringify(data.trains[n].track_number) ;
+      delay= JSON.stringify(data.trains[n].delay_time) ;
+
+//所属編成設定
+      sha= JSON.stringify(data.trains[n].affiliation) ;
+      hensei= JSON.stringify(data.trains[n].train_orchestration_number).replace('"','').replace('"','') ;
+switch (sha) {
+case '"急"':
+	sha = "東急" ;
+	break;
+case '"副"':
+	sha = " ﾒﾄﾛ" ;
+	break;
+case '"相"':
+	sha = "相鉄" ;
+	break;
+case '"み"':
+	sha = "横高" ;
+	break;
+case '"西"':
+	sha = "西武" ;
+	break;
+case '"東"':
+	sha = "東武" ;
+	break;
+case '"南"':
+	sha = "南北" ;
+	break;
+case '"都"':
+	sha = "都営" ;
+	break;
+case 'null':
+	sha = "――" ;
+	break;
+
+}
+
+//遅れ
+if ( delay = "0"){
+ delay = "　" ;
+} else {
+ delay = "+" + delay ;
+}
+
+
+      info = kind + des + unban +  sha + hensei + " " +delay;
+console.log(info + stid + trid) ;
+
+
+	nameText = 0;
+
+
+switch (stid){
+case ('26'):
+	switch (trid){
+	case ('-2'):
+	nameText = document.getElementById('ty01-3a');
+	var target;
+	target = document.getElementById('ty01-3ad');
+	target.style.left = '155px' ;
+	target.style.top = '95px' ;
+	break ;
+
+	case ('-1'):
+	nameText = document.getElementById('ty01-4a');
+	var target;
+	target = document.getElementById('ty01-4ad');
+	target.style.left = '155px' ;
+	target.style.top = '150px' ;
+	break ;
+
+	case ('1'):
+	nameText = document.getElementById('ty01-5a');
+	var target;
+	target = document.getElementById('ty01-5ad');
+	target.style.left = '155px' ;
+	target.style.top = '190px' ;
+	break ;
+
+	case ('2'):
+	nameText = document.getElementById('ty01-6a');
+	var target;
+	target = document.getElementById('ty01-6ad');
+	target.style.left = '155px' ;
+	target.style.top = '245px' ;
+	break ;
+
+	}
+	break ;
+case ('908'):
+	switch (trid){
+	case ('-1'):
+	nameText = document.getElementById('ty02-1a');
+	var target;
+	target = document.getElementById('ty02-1ad');
+	target.style.left = '577px' ;
+	target.style.top = '150px' ;
+	break ;
+
+	case ('1'):
+	nameText = document.getElementById('ty02-2a');
+	var target;
+	target = document.getElementById('ty02-2ad');
+	target.style.left = '577px' ;
+	target.style.top = '190px' ;
+	break ;
+
+	}
+	break ;
+case ('909'):
+	switch (trid){
+	case ('-1'):
+	nameText = document.getElementById('ty03-1a');
+	var target;
+	target = document.getElementById('ty03-1ad');
+	target.style.left = '1003px' ;
+	target.style.top = '95px' ;
+	break ;
+
+	case ('1'):
+	nameText = document.getElementById('ty03-2a');
+	var target;
+	target = document.getElementById('ty03-2ad');
+	target.style.left = '1003px' ;
+	target.style.top = '245px' ;
+	break ;
+	}
+	break ;
+default:
+	nameText = 0;
+        break ;
+}
+
+
+switch (scid){
+case ('24'):
+	nameText = document.getElementById('ty01-02');
+	var target;
+	target = document.getElementById('ty01-02d');
+	target.style.left = '360px' ;
+	target.style.top = '150px' ;
+	break ;
+
+case ('2'):
+	nameText = document.getElementById('ty02-01');
+	var target;
+	target = document.getElementById('ty02-01d');
+	target.style.left = '360px' ;
+	target.style.top = '190px' ;
+	break ;
+
+case ('25'):
+	nameText = document.getElementById('ty02-03');
+	var target;
+	target = document.getElementById('ty02-03d');
+	target.style.left = '730px' ;
+	target.style.top = '150px' ;
+	break ;
+
+case ('3'):
+	nameText = document.getElementById('ty03-02');
+	var target;
+	target = document.getElementById('ty03-02d');
+	target.style.left = '730px' ;
+	target.style.top = '190px' ;
+	break ;
+
+case ('26'):
+	nameText = document.getElementById('ty03-04');
+	var target;
+	target = document.getElementById('ty03-04d');
+	target.style.left = '1400px' ;
+	target.style.top = '150px' ;
+	break ;
+
+case ('4'):
+	nameText = document.getElementById('ty04-03');
+	var target;
+	target = document.getElementById('ty04-03d');
+	target.style.left = '1350px' ;
+	target.style.top = '190px' ;
+	break ;
+
+}
+
+
+if ( nameText == 0 ){
+} else {
+
+
+switch (kind) {
+case '各' :
+nameText.style.color = '#0000ff'; //文字
+break;
+case '急' :
+nameText.style.color = '#ff0000'; //文字
+break;
+case '通' :
+nameText.style.color = '#ff4500'; //文字
+break;
+case '特' :
+nameText.style.color = '#ff8c00'; //文字
+break;
+case 'Ｆ' :
+nameText.style.color = '#008000'; //文字
+break;
+}
+
+nameText.value = info;
+}
+
+}
+
+
+</script>
+
+
+  </body>
+</html>
