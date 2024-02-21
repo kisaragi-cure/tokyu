@@ -76,6 +76,8 @@ background-color: #ffffff;
 <!祐天寺-学芸大学>
 <div id="ty03-04d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty03-04" disabled / name="address" size="14" value=""　></div>
 <div id="ty04-03d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty04-03" disabled / name="address" size="14" value=""　></div>
+	
+<div id="ty99d" style="position: absolute; top: 10px; left:520px; font-size:18pt"　><input type="text"  id = "ty99" disabled / name="address" size="100" value="試験"　></div>
 
 <div style="position: absolute; top: 30px; left:2000px; font-size:18pt"><p>学芸大学</p></div>
 
@@ -112,6 +114,8 @@ background-color: #ffffff;
       len = JSON.stringify(data.trains.length) ;
 
 	let nameText = document.getElementById('ty01-3a');
+	
+ty99.value = "表示試験→" + JSON.stringify(data.trains[1].kind);	
 
 for ( n = 0; n < len; n++) {
 
