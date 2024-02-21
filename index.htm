@@ -2,7 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
-    <title>東急線在線情報</title>
+    <title>CK在線情報</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="refresh" content="15">
 
@@ -22,13 +22,15 @@ background-color: #ffffff;
 
 </style>
 
+	  <link rel="icon" href="tyy.ico">
+
   </head>
 
 
   <body background="toyoko01.png">
 
 
-<p>東横線(渋谷～横浜)　　　　　[更新間隔：15秒]　　　　　　　　　　　　　　　　　　　　　　　　　　　　Ver.1.00 </p>
+<p>東横線(渋谷～横浜)　　　　　[更新間隔：15秒]　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(C)Cure_kisaragi 2024 / Ver.1.00 </p>
 <nobr>
 
 <br>
@@ -76,6 +78,8 @@ background-color: #ffffff;
 <div id="ty04-03d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty04-03" disabled / name="address" size="14" value=""　></div>
 
 <div style="position: absolute; top: 30px; left:2000px; font-size:18pt"><p>学芸大学</p></div>
+
+<div style="position: absolute; top: 300px; left:120px; font-size:18pt"><p>都立大学</p></div>
 
 
 <div style="position: absolute; top: 1000px; left:2340px; font-size:18pt"><p>　</p></div>
@@ -288,20 +292,20 @@ case '"都"':
 	break;
 case 'null':
 	sha = "――" ;
-	hensei = "――" ;
+	hensei = "―" ;
 	break;
 
 }
 
 //遅れ
-if ( delay = "0"){
+if ( delay == "0"){
  delay = "　" ;
 } else {
- delay = "+" + delay ;
+ delay = '+' + delay ;
 }
 
 
-      info = kind + des + unban +  sha + hensei + " " +delay;
+      info = kind + des + unban +  sha + hensei + " " + delay;
 console.log(info + stid + trid) ;
 
 
@@ -384,6 +388,33 @@ case ('909'):
 	break ;
 	}
 	break ;
+case ('910'):
+	switch (trid){
+	case ('-1'):
+	nameText = document.getElementById('ty04-1a');
+	var target;
+	target = document.getElementById('ty04-1ad');
+	target.style.left = '1522px' ;
+	target.style.top = '150px' ;
+	break ;
+
+	case ('1'):
+	nameText = document.getElementById('ty04-3a');
+	var target;
+	target = document.getElementById('ty04-3ad');
+	target.style.left = '1522px' ;
+	target.style.top = '230px' ;
+	break ;
+
+	case ('2'):
+	nameText = document.getElementById('ty04-2a');
+	var target;
+	target = document.getElementById('ty04-2ad');
+	target.style.left = '1522px' ;
+	target.style.top = '190px' ;
+	break ;
+	}
+	break ;
 default:
 	nameText = 0;
         break ;
@@ -454,13 +485,13 @@ case '急' :
 nameText.style.color = '#ff0000'; //文字
 break;
 case '通' :
-nameText.style.color = '#ff4500'; //文字
+nameText.style.color = '#008000'; //文字
 break;
 case '特' :
 nameText.style.color = '#ff8c00'; //文字
 break;
 case 'Ｆ' :
-nameText.style.color = '#008000'; //文字
+nameText.style.color = '#ff8c00'; //文字
 break;
 }
 
