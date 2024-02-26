@@ -1,7 +1,7 @@
 
 <html lang="ja">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8" content="noindex,noarchive,nofollow" />
     <title>CK在線情報</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="refresh" content="15">
@@ -116,7 +116,7 @@ background-color: #ffffff;
 <div id="ty05-04b" style="position: absolute; top: 193px; left:1636px; font-size:13pt"></div>
 <div id="ty05-04c" style="position: absolute; top: 193px; left:1736px; font-size:13pt; color:#FF0000;"></div>
 
-<div id="ty99d" style="position: absolute; top: 10px; left:520px; font-size:18pt"　><input type="text"  id = "ty99" disabled / name="address" size="100" value="試験"　></div>
+<div id="ty99d" style="position: absolute; top: 5px; left:520px; font-size:18pt"　><input type="text"  id = "ty99" disabled / name="address" size="100" value="試験"　></div>
 
 <div style="position: absolute; top: 30px; left:1830px; font-size:18pt"><p>学芸大学</p></div>
 <div id="ty05-1ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty05-1a" disabled / name="address" size="14" value=""　></div>
@@ -182,6 +182,34 @@ background-color: #ffffff;
 <div id="mg07-08b" style="position: absolute; top: 353px; left:796px; font-size:13pt"></div>
 <div id="mg07-08c" style="position: absolute; top: 353px; left:896px; font-size:13pt; color:#FF0000;"></div>
 
+<div style="position: absolute; top: 395px; left:1100px; font-size:18pt"><p>田園調布</p></div>
+<div id="ty08-1ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty08-1a" disabled / name="address" size="14" value=""　></div>
+<div id="ty08-1b" style="position: absolute; top: 486px; left:1100px; font-size:13pt"></div>
+<div id="ty08-1c" style="position: absolute; top: 486px; left:1200px; font-size:13pt; color:#FF0000;"></div>
+<div id="ty08-2ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty08-2a" disabled / name="address" size="14" value=""　></div>
+<div id="ty08-2b" style="position: absolute; top: 541px; left:1100px; font-size:13pt"></div>
+<div id="ty08-2c" style="position: absolute; top: 541px; left:1200px; font-size:13pt; color:#FF0000;"></div>
+<div id="ty08-3ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty08-3a" disabled / name="address" size="14" value=""　></div>
+<div id="ty08-3b" style="position: absolute; top: 581px; left:1100px; font-size:13pt"></div>
+<div id="ty08-3c" style="position: absolute; top: 581px; left:1200px; font-size:13pt; color:#FF0000;"></div>
+<div id="ty08-4ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty08-4a" disabled / name="address" size="14" value=""　></div>
+<div id="ty08-4b" style="position: absolute; top: 636px; left:1100px; font-size:13pt"></div>
+<div id="ty08-4c" style="position: absolute; top: 636px; left:1200px; font-size:13pt; color:#FF0000;"></div>
+
+<!田園調布-多摩川>
+<div id="ty08-09d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty08-09" disabled / name="address" size="14" value=""　></div>
+<div id="ty08-09b" style="position: absolute; top: 486px; left:1306px; font-size:13pt"></div>
+<div id="ty08-09c" style="position: absolute; top: 486px; left:1406px; font-size:13pt; color:#FF0000;"></div>
+<div id="mg08-09d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "mg08-09" disabled / name="address" size="14" value=""　></div>
+<div id="mg08-09b" style="position: absolute; top: 541px; left:1376px; font-size:13pt"></div>
+<div id="mg08-09c" style="position: absolute; top: 541px; left:1476px; font-size:13pt; color:#FF0000;"></div>
+<div id="mg09-08d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "mg09-08" disabled / name="address" size="14" value=""　></div>
+<div id="mg09-08b" style="position: absolute; top: 581px; left:1376px; font-size:13pt"></div>
+<div id="mg09-08c" style="position: absolute; top: 581px; left:1476px; font-size:13pt; color:#FF0000;"></div>
+<div id="ty09-08d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty09-08" disabled / name="address" size="14" value=""　></div>
+<div id="ty09-08b" style="position: absolute; top: 636px; left:1306px; font-size:13pt"></div>
+<div id="ty09-08c" style="position: absolute; top: 636px; left:1406px; font-size:13pt; color:#FF0000;"></div>
+
 
 <div style="position: absolute; top: 1300px; left:2030px; font-size:18pt"><p>　</p></div>
 
@@ -191,6 +219,10 @@ background-color: #ffffff;
 </font>
 
 <script type="module" >
+
+
+///////////////////////////////ここから東横線
+
 var request = new XMLHttpRequest();
 request.open("GET", "https://tokyu-tid.s3.amazonaws.com/toyoko.json", true);
 request.responseType = "text";
@@ -216,14 +248,14 @@ var data = JSON.parse(request.responseText);
       let hensei = '';
       let delay = '';
       let line = '';
-
+      let cars = '';
       let n = 1;
 
       len = JSON.stringify(data.trains.length) ;
 
 	let nameText = document.getElementById('ty01-3a');
 
-ty99.value = "表示試験→" ;
+ty99.value = "表示試験" ;
 
 for ( n = 0; n < len; n++) {
 
@@ -373,6 +405,7 @@ unban = (unban - 900) + "G" ;
       scid= JSON.stringify(data.trains[n].section_id) ;
       trid= JSON.stringify(data.trains[n].track_number) ;
       delay= JSON.stringify(data.trains[n].delay_time) ;
+      cars= JSON.stringify(data.trains[n].num_of_cars) ;
 
 //所属編成設定
       sha= JSON.stringify(data.trains[n].affiliation) ;
@@ -420,8 +453,15 @@ case '"副"':
 	break;
 case '"相"':
 	sha = "(G" ;
+
+	if ( line == 26001 ){
 	hensei = "2" + hensei + ")" ;
 	break;
+} else {
+	hensei = hensei - (-210) ;
+	hensei =  hensei + ")" ;
+	break;
+}
 case '"み"':
 	sha = "(Y" ;
 	hensei = hensei - 80 + 510 ;
@@ -497,8 +537,8 @@ case ('26'):
 	target.style.top = '95px' ;
 	var doc0= document.getElementById("ty01-3b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty01-3c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty01-3c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	case ('-1'):
@@ -508,8 +548,8 @@ case ('26'):
 	target.style.top = '150px' ;
 	var doc0= document.getElementById("ty01-4b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty01-4c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty01-4c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	case ('1'):
@@ -519,8 +559,8 @@ case ('26'):
 	target.style.top = '190px' ;
 	var doc0= document.getElementById("ty01-5b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty01-5c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty01-5c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	case ('2'):
@@ -530,8 +570,8 @@ case ('26'):
 	target.style.top = '245px' ;
 	var doc0= document.getElementById("ty01-6b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty01-6c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty01-6c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	}
@@ -545,8 +585,8 @@ case ('908'):
 	target.style.top = '150px' ;
 	var doc0= document.getElementById("ty02-1b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty02-1c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty02-1c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	case ('1'):
@@ -556,8 +596,8 @@ case ('908'):
 	target.style.top = '190px' ;
 	var doc0= document.getElementById("ty02-2b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty02-2c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty02-2c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	}
@@ -571,8 +611,8 @@ case ('909'):
 	target.style.top = '95px' ;
 	var doc0= document.getElementById("ty03-1b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty03-1c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty03-1c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	case ('1'):
@@ -582,8 +622,8 @@ case ('909'):
 	target.style.top = '245px' ;
 	var doc0= document.getElementById("ty03-2b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty03-2c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty03-2c");  
+	doc1.innerHTML= delay;
 	break ;
 	}
 	break ;
@@ -596,8 +636,8 @@ case ('910'):
 	target.style.top = '150px' ;
 	var doc0= document.getElementById("ty04-1b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty04-1c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty04-1c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	case ('1'):
@@ -607,8 +647,8 @@ case ('910'):
 	target.style.top = '230px' ;
 	var doc0= document.getElementById("ty04-3b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty04-3c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty04-3c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	case ('2'):
@@ -618,8 +658,8 @@ case ('910'):
 	target.style.top = '190px' ;
 	var doc0= document.getElementById("ty04-2b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty04-2c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty04-2c");  
+	doc1.innerHTML= delay;
 	break ;
 	}
 	break ;
@@ -632,8 +672,8 @@ case ('911'):
 	target.style.top = '130px' ;
 	var doc0= document.getElementById("ty05-1b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty05-1c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty05-1c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	case ('1'):
@@ -643,8 +683,8 @@ case ('911'):
 	target.style.top = '190px' ;
 	var doc0= document.getElementById("ty05-2b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty05-2c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty05-2c");  
+	doc1.innerHTML= delay;
 	break ;
 	}
 	break ;
@@ -657,8 +697,8 @@ case ('912'):
 	target.style.top = '538px' ;
 	var doc0= document.getElementById("ty06-1b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty06-1c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty06-1c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	case ('1'):
@@ -668,8 +708,8 @@ case ('912'):
 	target.style.top = '578px' ;
 	var doc0= document.getElementById("ty06-2b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty06-2c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty06-2c");  
+	doc1.innerHTML= delay;
 	break ;
 	}
 	break ;
@@ -683,8 +723,8 @@ case ('913'):
 	target.style.top = '483px' ;
 	var doc0= document.getElementById("ty07-1b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty07-1c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty07-1c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	case ('-2'):
@@ -694,8 +734,8 @@ case ('913'):
 	target.style.top = '538px' ;
 	var doc0= document.getElementById("ty07-2b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty07-2c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty07-2c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	case ('2'):
@@ -705,8 +745,8 @@ case ('913'):
 	target.style.top = '578px' ;
 	var doc0= document.getElementById("ty07-3b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty07-3c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty07-3c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	case ('1'):
@@ -716,10 +756,36 @@ case ('913'):
 	target.style.top = '633px' ;
 	var doc0= document.getElementById("ty07-4b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty07-4c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty07-4c");  
+	doc1.innerHTML= delay;
 	break ;
 
+	}
+	break ;
+
+case ('914'):
+	switch (trid){
+	case ('-2'):
+	nameText = document.getElementById('ty08-1a');
+	target = document.getElementById('ty08-1ad');
+	target.style.left = '1074px' ;
+	target.style.top = '483px' ;
+	var doc0= document.getElementById("ty08-1b");  
+	doc0.innerHTML= info;
+	var doc1= document.getElementById("ty08-1c");  
+	doc1.innerHTML= delay;
+	break ;
+
+	case ('2'):
+	nameText = document.getElementById('ty08-4a');
+	target = document.getElementById('ty08-4ad');
+	target.style.left = '1074px' ;
+	target.style.top = '633px' ;
+	var doc0= document.getElementById("ty08-4b");  
+	doc0.innerHTML= info;
+	var doc1= document.getElementById("ty08-4c");  
+	doc1.innerHTML= delay;
+	break ;
 	}
 	break ;
 
@@ -736,8 +802,8 @@ case ('24'):
 	target.style.top = '150px' ;
 	var doc0= document.getElementById("ty01-02b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty01-02c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty01-02c");  
+	doc1.innerHTML= delay;
 	break ;
 
 case ('2'):
@@ -748,8 +814,8 @@ if ( nameText.value == "" ){
 	target.style.top = '190px' ;
 	var doc0= document.getElementById("ty02-01b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty02-01c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty02-01c");  
+	doc1.innerHTML= delay;
 	break ;
 } else {
 	nameText = document.getElementById('ty02p01');
@@ -758,8 +824,8 @@ if ( nameText.value == "" ){
 	target.style.top = '220px' ;
 	var doc0= document.getElementById("ty02p01b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty02p01c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty02p01c");  
+	doc1.innerHTML= delay;
 	break ;
 }
 
@@ -770,8 +836,8 @@ case ('25'):
 	target.style.top = '150px' ;
 	var doc0= document.getElementById("ty02-03b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty02-03c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty02-03c");  
+	doc1.innerHTML= delay;
 	break ;
 
 case ('3'):
@@ -781,8 +847,8 @@ case ('3'):
 	target.style.top = '190px' ;
 	var doc0= document.getElementById("ty03-02b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty03-02c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty03-02c");  
+	doc1.innerHTML= delay;
 	break ;
 
 case ('26'):
@@ -792,8 +858,8 @@ case ('26'):
 	target.style.top = '150px' ;
 	var doc0= document.getElementById("ty03-04b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty03-04c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty03-04c");  
+	doc1.innerHTML= delay;
 	break ;
 
 case ('4'):
@@ -803,8 +869,8 @@ case ('4'):
 	target.style.top = '190px' ;
 	var doc0= document.getElementById("ty04-03b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty04-03c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty04-03c");  
+	doc1.innerHTML= delay;
 	break ;
 
 case ('27'):
@@ -814,8 +880,8 @@ case ('27'):
 	target.style.top = '150px' ;
 	var doc0= document.getElementById("ty04-05b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty04-05c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty04-05c");  
+	doc1.innerHTML= delay;
 	break ;
 
 case ('5'):
@@ -825,8 +891,8 @@ case ('5'):
 	target.style.top = '190px' ;
 	var doc0= document.getElementById("ty05-04b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty05-04c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty05-04c");  
+	doc1.innerHTML= delay;
 	break ;
 
 case ('28'):
@@ -836,8 +902,8 @@ case ('28'):
 	target.style.top = '538px' ;
 	var doc0= document.getElementById("ty05-06b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty05-06c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty05-06c");  
+	doc1.innerHTML= delay;
 	break ;
 
 case ('6'):
@@ -847,8 +913,8 @@ case ('6'):
 	target.style.top = '578px' ;
 	var doc0= document.getElementById("ty06-05b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty06-05c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty06-05c");  
+	doc1.innerHTML= delay;
 	break ;
 
 case ('29'):
@@ -858,8 +924,8 @@ case ('29'):
 	target.style.top = '538px' ;
 	var doc0= document.getElementById("ty06-07b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty06-07c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty06-07c");  
+	doc1.innerHTML= delay;
 	break ;
 
 case ('7'):
@@ -869,8 +935,8 @@ case ('7'):
 	target.style.top = '578px' ;
 	var doc0= document.getElementById("ty07-06b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty07-06c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty07-06c");  
+	doc1.innerHTML= delay;
 	break ;
 
 case ('30'):
@@ -880,8 +946,8 @@ case ('30'):
 	target.style.top = '538px' ;
 	var doc0= document.getElementById("ty07-08b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty07-08c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty07-08c");  
+	doc1.innerHTML= delay;
 	break ;
 
 case ('8'):
@@ -891,8 +957,30 @@ case ('8'):
 	target.style.top = '578px' ;
 	var doc0= document.getElementById("ty08-07b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("ty08-07c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("ty08-07c");  
+	doc1.innerHTML= delay;
+	break ;
+
+case ('31'):
+	nameText = document.getElementById('ty08-09');
+	target = document.getElementById('ty08-09d');
+	target.style.left = '1280px' ;
+	target.style.top = '483px' ;
+	var doc0= document.getElementById("ty08-09b");  
+	doc0.innerHTML= info;
+	var doc1= document.getElementById("ty08-09c");  
+	doc1.innerHTML= delay;
+	break ;
+
+case ('9'):
+	nameText = document.getElementById('ty09-08');
+	target = document.getElementById('ty09-08d');
+	target.style.left = '1280px' ;
+	target.style.top = '633px' ;
+	var doc0= document.getElementById("ty09-08b");  
+	doc0.innerHTML= info;
+	var doc1= document.getElementById("ty09-08c");  
+	doc1.innerHTML= delay;
 	break ;
 }
 
@@ -920,6 +1008,19 @@ break;
 }
 
 nameText.value = kind;
+
+
+switch (cars) {
+	case '"6"' :
+	doc0.style.textDecoration = "underline";
+	break;
+	case '"8"' :
+	break;
+	case '"10"' :
+	doc0.style.fontWeight = "bold";
+	break;
+}
+
 }
 
 }
@@ -955,7 +1056,8 @@ let info = '';
       let sha = '';
       let hensei = '';
       let delay = '';
-
+      let line = '';
+      let cars = '';
       let n = 1;
 
       len = JSON.stringify(data2.trains.length) ;
@@ -1111,14 +1213,23 @@ unban = (unban - 900) + "G" ;
       scid= JSON.stringify(data2.trains[n].section_id) ;
       trid= JSON.stringify(data2.trains[n].track_number) ;
       delay= JSON.stringify(data2.trains[n].delay_time) ;
+      cars= JSON.stringify(data2.trains[n].num_of_cars) ;
 
 //所属編成設定
       sha= JSON.stringify(data2.trains[n].affiliation) ;
+      line = JSON.stringify(data2.trains[n].train_line_id); 
       hensei= JSON.stringify(data2.trains[n].train_orchestration_number).replace('"','').replace('"','') ;
+
 switch (sha) {
-case '"急"':
+
+case '"急"' :
 	sha = "(K" ;
-	if ( hensei > 50) {
+	if ( line == 26001 ){
+
+	if ( hensei == 87){
+	sha = "(Y" ;
+	hensei = "517)" ;
+	} else if ( hensei > 50) {
 	hensei = "5" + hensei + ")" ;
 	} else if ( hensei < 20) {
 	hensei = "4" + hensei + ")" ;
@@ -1126,7 +1237,17 @@ case '"急"':
 	hensei = hensei - 20 + 500 ;
 	hensei = hensei + ")" ;
 	}
-	
+
+} else {
+	if ( hensei > 30) {
+	hensei = hensei + 550 ;
+	hensei = "5" + hensei + ")" ;
+	} else if ( hensei < 30) {
+	hensei = "3" + hensei + ")" ;
+	}
+
+}
+
 	break;
 case '"副"':
 	sha = "(F" ;
@@ -1142,8 +1263,15 @@ case '"副"':
 	break;
 case '"相"':
 	sha = "(G" ;
+
+	if ( line == 26001 ){
 	hensei = "2" + hensei + ")" ;
 	break;
+} else {
+	hensei = hensei - (-210) ;
+	hensei =  hensei + ")" ;
+	break;
+}
 case '"み"':
 	sha = "(Y" ;
 	hensei = hensei - 80 + 510 ;
@@ -1190,7 +1318,6 @@ case 'null':
 	sha = "　　" ;
 	hensei = "　" ;
 	break;
-
 }
 
 //遅れ
@@ -1218,14 +1345,42 @@ case ('934'):
 	target.style.top = '350px' ;
 	var doc0= document.getElementById("mg07-1b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("mg07-1c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("mg07-1c");  
+	doc1.innerHTML= delay;
 	break ;
 
 	case ('1'):
 	break ;
 	}
 	break ;
+
+
+case ('914'):
+	switch (trid){
+	case ('-1'):
+	nameText = document.getElementById('ty08-2a');
+	target = document.getElementById('ty08-2ad');
+	target.style.left = '1074px' ;
+	target.style.top = '538px' ;
+	var doc0= document.getElementById("ty08-2b");  
+	doc0.innerHTML= info;
+	var doc1= document.getElementById("ty08-2c");  
+	doc1.innerHTML= delay;
+	break ;
+
+	case ('1'):
+	nameText = document.getElementById('ty08-3a');
+	target = document.getElementById('ty08-3ad');
+	target.style.left = '1074px' ;
+	target.style.top = '578px' ;
+	var doc0= document.getElementById("ty08-3b");  
+	doc0.innerHTML= info;
+	var doc1= document.getElementById("ty08-3c");  
+	doc1.innerHTML= delay;
+	break ;
+	}
+	break ;
+
 default:
 	nameText = 0;
         break ;
@@ -1240,8 +1395,30 @@ case ('65'):
 	target.style.top = '350px' ;
 	var doc0= document.getElementById("mg07-08b");  
 	doc0.innerHTML= info;
-	var doc0= document.getElementById("mg07-08c");  
-	doc0.innerHTML= delay;
+	var doc1= document.getElementById("mg07-08c");  
+	doc1.innerHTML= delay;
+	break ;
+
+case ('66'):
+	nameText = document.getElementById('mg08-09');
+	target = document.getElementById('mg08-09d');
+	target.style.left = '1350px' ;
+	target.style.top = '538px' ;
+	var doc0= document.getElementById("mg08-09b");  
+	doc0.innerHTML= info;
+	var doc1= document.getElementById("mg08-09c");  
+	doc1.innerHTML= delay;
+	break ;
+
+case ('53'):
+	nameText = document.getElementById('mg09-08');
+	target = document.getElementById('mg09-08d');
+	target.style.left = '1350px' ;
+	target.style.top = '578px' ;
+	var doc0= document.getElementById("mg09-08b");  
+	doc0.innerHTML= info;
+	var doc1= document.getElementById("mg09-08c");  
+	doc1.innerHTML= delay;
 	break ;
 
 
@@ -1271,6 +1448,18 @@ break;
 }
 
 nameText.value = kind;
+
+
+switch (cars) {
+	case '"6"' :
+	doc0.style.textDecoration = "underline";
+	break;
+	case '"8"' :
+	break;
+	case '"10"' :
+	doc0.style.fontWeight = "bold";
+	break;
+}
 }
 
 }
