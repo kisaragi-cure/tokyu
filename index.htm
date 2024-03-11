@@ -2,8 +2,8 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" content="noindex,noarchive,nofollow" />
-    <title>CK在線情報(TY)</title>
-	  <link rel="icon" href="tyy.ico">
+    <title>CK在線情報</title>
+	<link rel="icon" href="tyy.ico">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="refresh" content="15">
 
@@ -629,9 +629,21 @@ background-color: #ffffff;
 <div id="sh01-02c" style="position: absolute; top: 2240px; left:636px; font-size:13pt; color:#FF0000;"></div>
 
 <div style="position: absolute; top: 2080px; left:830px; font-size:18pt"><p>新横浜</p></div>
+<div id="sh01-1ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "sh01-1a" disabled / name="address" size="14" value=""　></div>
+<div id="sh01-1" style="position: absolute; top: 2160px; left:798px; font-size:13pt; "></div>
+<div id="sh01-1b" style="position: absolute; top: 2160px; left:818px; font-size:13pt; "></div>
+<div id="sh01-1c" style="position: absolute; top: 2160px; left:918px; font-size:13pt; color:#FF0000; "></div>
+<div id="sh01-2ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "sh01-2a" disabled / name="address" size="14" value=""　></div>
+<div id="sh01-2" style="position: absolute; top: 2220px; left:798px; font-size:13pt; "></div>
+<div id="sh01-2b" style="position: absolute; top: 2220px; left:818px; font-size:13pt; "></div>
+<div id="sh01-2c" style="position: absolute; top: 2220px; left:918px; font-size:13pt; color:#FF0000; "></div>
+<div id="sh01-3ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "sh01-3a" disabled / name="address" size="14" value=""　></div>
+<div id="sh01-3" style="position: absolute; top: 2280px; left:798px; font-size:13pt; "></div>
+<div id="sh01-3b" style="position: absolute; top: 2280px; left:818px; font-size:13pt; "></div>
+<div id="sh01-3c" style="position: absolute; top: 2280px; left:918px; font-size:13pt; color:#FF0000; "></div>
 
 
-<div style="position: absolute; top: 2000px; left:1100px; font-size:22pt"><input type="button" id = "sotetsu" value="相鉄エリア" ></div>
+<div style="position: absolute; top: 2130px; left:1000px; font-size:22pt"><input type="button" id = "sotetsu" value="相鉄エリア→" ></div>
 <div style="position: absolute; top: 4000px; left:2030px; font-size:18pt"><p>　</p></div>
 
 
@@ -3160,6 +3172,40 @@ case ('982'):
 	doc2= document.getElementById("sh02-2");  
 	doc0= document.getElementById("sh02-2b");  
 	doc1= document.getElementById("sh02-2c");  
+	break ;
+	}
+	break ;
+
+case ('983'):
+	switch (trid){
+	case ('-1'):
+	nameText = document.getElementById('sh01-1a');
+	target = document.getElementById('sh01-1ad');
+	target.style.left = 792;
+	target.style.top = '2157px' ;
+	doc2= document.getElementById("sh01-1");  
+	doc0= document.getElementById("sh01-1b");  
+	doc1= document.getElementById("sh01-1c");  
+	break ;
+
+	case ('1'):
+	nameText = document.getElementById('sh01-2a');
+	target = document.getElementById('sh01-2ad');
+	target.style.left = '792px' ;
+	target.style.top = '2217px' ;
+	doc2= document.getElementById("sh01-2");  
+	doc0= document.getElementById("sh01-2b");  
+	doc1= document.getElementById("sh01-2c");  
+	break ;
+
+	case ('2'):
+	nameText = document.getElementById('sh01-3a');
+	target = document.getElementById('sh01-3ad');
+	target.style.left = '792px' ;
+	target.style.top = '2277px' ;
+	doc2= document.getElementById("sh01-3");  
+	doc0= document.getElementById("sh01-3b");  
+	doc1= document.getElementById("sh01-3c");  
 	break ;
 	}
 	break ;
