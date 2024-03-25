@@ -211,7 +211,7 @@ background-color: #ffffff;
 <div id="ty08-07b" style="position: absolute; top: 581px; left:756px; font-size:13pt; "></div>
 <div id="ty08-07c" style="position: absolute; top: 581px; left:856px; font-size:13pt; color:#FF0000; "></div>
 
-<div style="position: absolute; top: 350px; left:510px; font-size:22pt"><input type="button" value="←目黒エリア" ></div>
+<div style="position: absolute; top: 350px; left:510px; font-size:22pt"><input type="button" id = "meguro" value="←目黒エリア" ></div>
 <div style="position: absolute; top: 260px; left:645px; font-size:16pt"><p>(奥　沢)</p></div>
 <div id="mg07-1ad" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "mg07-1a" disabled / name="address" size="14" value=""　></div>
 <div id="mg07-1" style="position: absolute; top: 353px; left:618px; font-size:13pt; "></div>
@@ -654,6 +654,9 @@ background-color: #ffffff;
 
 document.getElementById("sotetsu").addEventListener("click", function () {
   location.replace("https://kisaragi-cure.github.io/sagami2024/");
+}, false);
+document.getElementById("meguro").addEventListener("click", function () {
+  location.replace("https://kisaragi-cure.github.io/okusawa/");
 }, false);
 
 
