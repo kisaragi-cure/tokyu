@@ -13,7 +13,7 @@ body{
 	background-repeat: no-repeat;
 	background-image: url(toyoko01.png);
 	background-size:2045px;
-	zoom: 80%;
+	zoom: 90%;
 }
 
 textarea {
@@ -39,7 +39,7 @@ background-color: #ffffff;
 <font face="BIZ UDゴシック,メイリオ,ＭＳ ゴシック">
 
 <nobr>
-<p>渋谷エリア(渋谷～横浜・新横浜)　　　　　[更新間隔：15秒]　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(C)Cure_kisaragi 2024 / Ver.1.50 </p>
+<p>渋谷エリア(渋谷～横浜・新横浜)　　　　　[更新間隔：15秒]　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(C)Cure_kisaragi 2024 / Ver.1.60 </p>
 <br>
 <br>
 <br>
@@ -678,11 +678,17 @@ var data = JSON.parse(request.responseText);
 
 //在線情報の処理
       let info = '';
+      let infoH = '';
       let len = '';
+      let hiyoshi = 0;
 
       let kind = '';
+      let kind2 = '';
+      let kind3 = '';
       let unban = '';
+      let unban1 = '';
       let des = '';
+      let des2 = '';
       let stid = '';
       let scid = '';
       let trid = '';
@@ -692,7 +698,10 @@ var data = JSON.parse(request.responseText);
       let line = '';
       let cars = '';
       let dai = 0;
-      let n = 1;
+      let n = 0;
+      let n1 = 0;
+      let p = 5;
+      let p1 = 250;
 
       len = JSON.stringify(data.trains.length) ;
 
@@ -700,9 +709,13 @@ var data = JSON.parse(request.responseText);
 
 ty99.value = "表示試験" ;
 
+var request4 = new XMLHttpRequest();
+var request5 = new XMLHttpRequest();
+
 for ( n = 0; n < len; n++) {
 
 dai = 0;
+hiyoshi = 0;
 
 
 //種別設定
@@ -710,36 +723,52 @@ dai = 0;
 	switch (kind) {
 case '"普"':
 	kind = "各";
+	kind3 = "普";
 	break;
 case '"急"':
 	kind = "急";
+	kind3 = "急";
 	break;
 case '"特"':
 	kind = "特";
+	kind3 = "特";
 	break;
 case '"通"':
 	kind = "通";
+	kind3 = "通";
 	break;
 case '"Ｆ"':
 	kind = "Ｆ";
+	kind3 = "Ｆ";
 	break;
 case '"Ｓ"':
 	kind = "Ｓ";
+	kind3 = "Ｓ";
 	break;
 case '"回"':
 	kind = "回";
+	kind3 = "回";
 	break;
 case 'null':
 	kind = "　";
+	kind3 = "　";
 	break;
 }
 
+      unban = JSON.stringify(data.trains[n].operation_number) ;
+      unban1 = JSON.stringify(data.trains[n].operation_number) ;
 //行先設定
       des= JSON.stringify(data.trains[n].destination_station_code) ;
 	switch (des) {
 case '33':
-	des = "副";
+	des = "副";	
+if ( localStorage.getItem( unban1) == null ){
+} else {
+des = localStorage.getItem( unban1) ;
+}
 	break;
+
+
 case '67':
 	des = "南";
 	break;
@@ -804,7 +833,6 @@ case '0':
 	des = "―";
 	break;
 }
-      unban = JSON.stringify(data.trains[n].operation_number) ;
       sha= JSON.stringify(data.trains[n].affiliation) ;
 //所属不一致判定
 if (sha != 'null'){
@@ -1014,6 +1042,14 @@ if ( delay == "0"){
 
       info =  des + unban +  sha + hensei ;
 
+let now = Math.floor(Date.now() / 60000) ;
+	if ( localStorage.getItem( unban + 'time' ) != null ){
+	 if( localStorage.getItem( unban + 'time' ) -(- 90) <= now ){
+		
+		localStorage.removeItem( unban );
+		localStorage.removeItem( unban + 'time' );
+	} 
+	}
 
 	nameText = 0;
 
@@ -1402,6 +1438,50 @@ case ('919'):
 	doc2= document.getElementById("ty13-4");  
 	doc0= document.getElementById("ty13-4b");  
 	doc1= document.getElementById("ty13-4c");  
+
+//ここから副都心線処理
+if ( des == '副') {
+infoH = info;
+var unban2 = unban1
+//行先が副の場合、ダイヤ参照する
+request4.open("GET", "https://timetable-api.tokyuapp.com/lines/26001/trains/" + unban2 + "/directions/up/kinds/" + kind3 + "/delays/0/sections/2", true);
+request4.responseType = "text";
+request4.onload = () => {
+  if (request4.readyState === request.DONE) {
+    if (request4.status === 200) {
+var data4 = JSON.parse(request4.responseText);
+      data4 = JSON.stringify(data4.destination) ;
+	switch (data4) {
+case '"池袋"':
+	data4 = "袋";
+	break ;
+case '"和光市"':
+	data4 = "和";
+	break ;
+case '"森林公園"':
+	data4 = "森";
+	break ;
+case '"石神井公園"':
+	data4 = "石";
+	break ;
+case '"小手指"':
+	data4 = "指";
+	break ;
+default:
+	data4 = "副";
+        break ;
+}
+localStorage.setItem( unban2 , data4 );
+localStorage.setItem( unban2 + 'time' , now );
+      console.log(  unban2 );
+      console.log( localStorage.getItem( unban2 ) );
+    }
+  }
+};
+request4.send(null);
+
+}
+
 	break ;
 	}
 	break ;
@@ -1614,7 +1694,51 @@ case ('5'):
 	target.style.top = '1834px' ;
 	doc2= document.getElementById("ty21-2");  
 	doc0= document.getElementById("ty21-2b");  
-	doc1= document.getElementById("ty21-2c");  
+	doc1= document.getElementById("ty21-2c");
+
+//ここから副都心線処理
+if ( des == '副') {
+infoH = info;
+var unban2 = unban1
+//行先が副の場合、ダイヤ参照する
+request5.open("GET", "https://timetable-api.tokyuapp.com/lines/26001/trains/" + unban2 + "/directions/up/kinds/" + kind3 + "/delays/0/sections/2", true);
+request5.responseType = "text";
+request5.onload = () => {
+  if (request5.readyState === request.DONE) {
+    if (request5.status === 200) {
+var data5 = JSON.parse(request5.responseText);
+      data5 = JSON.stringify(data5.destination) ;
+	switch (data5) {
+case '"池袋"':
+	data5 = "袋";
+	break ;
+case '"和光市"':
+	data5 = "和";
+	break ;
+case '"森林公園"':
+	data5 = "森";
+	break ;
+case '"石神井公園"':
+	data5 = "石";
+	break ;
+case '"小手指"':
+	data5 = "指";
+	break ;
+default:
+	data5 = "副";
+        break ;
+}
+localStorage.setItem( unban2 , data5 );
+localStorage.setItem( unban2 + 'time' , now );
+      console.log(  unban2 );
+      console.log( localStorage.getItem( unban2 ) );
+    }
+  }
+};
+request5.send(null);
+
+}
+  
 	break ;
 	}
 	break ;
@@ -2046,6 +2170,7 @@ doc0.style.backgroundColor = '#ffffff'; //背景
 doc1.style.backgroundColor = '#ffffff'; //背景
 doc2.style.backgroundColor = '#ffffff'; //背景
 
+
 if ( nameText == 0 ){
 } else {
 
@@ -2091,6 +2216,8 @@ switch (cars) {
 	break;
 }
 
+
+
 }
 
 }
@@ -2098,6 +2225,9 @@ switch (cars) {
     }
   }
 };
+
+
+
 
 request.send(null);
 
