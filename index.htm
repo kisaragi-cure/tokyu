@@ -757,6 +757,16 @@ case 'null':
 
       unban = JSON.stringify(data.trains[n].operation_number) ;
       unban1 = JSON.stringify(data.trains[n].operation_number) ;
+
+	if ( localStorage.getItem( unban1 + 'time' ) != null ){
+	 if( localStorage.getItem( unban1 + 'time' ) -(- 90) <= now ){
+		
+		localStorage.removeItem( unban1 );
+		localStorage.removeItem( unban1 + 'time' );
+	} 
+	}
+
+
 //行先設定
       des= JSON.stringify(data.trains[n].destination_station_code) ;
 	switch (des) {
@@ -825,6 +835,10 @@ case '108':
 	break;
 case '111':
 	des = "相";
+if ( localStorage.getItem( unban1) == null ){
+} else {
+des = localStorage.getItem( unban1) ;
+}
 	break;
 case '129':
 	des = "蒲";
@@ -1041,14 +1055,6 @@ if ( delay == "0"){
 
 
       info =  des + unban +  sha + hensei ;
-
-	if ( localStorage.getItem( unban + 'time' ) != null ){
-	 if( localStorage.getItem( unban + 'time' ) -(- 90) <= now ){
-		
-		localStorage.removeItem( unban );
-		localStorage.removeItem( unban + 'time' );
-	} 
-	}
 
 	nameText = 0;
 
@@ -2073,7 +2079,7 @@ case ('21'):
 }
 
 //ここから副都心線処理
-if ( des == '副') {
+if ( des == '副' || des == '相') {
 F[q] = n;
 q ++ ;
 
@@ -2164,8 +2170,13 @@ sleepSetInterval(500, () => {
 
 k = F[m] ;
 unban2 = JSON.stringify(data.trains[k].operation_number) ;
+des2 = JSON.stringify(data.trains[k].destination_station_code) ;
 requesta[m] = new XMLHttpRequest();
+if ( des2 == '33' ){
 requesta[m].open("GET", "https://timetable-api.tokyuapp.com/lines/26001/trains/" + unban2 + "/directions/up/kinds/" + kind3 + "/delays/0/sections/2", true);
+} else {
+requesta[m].open("GET", "https://timetable-api.tokyuapp.com/lines/26001/trains/" + unban2 + "/directions/down/kinds/" + kind3 + "/delays/0/sections/2", true);
+}
 requesta[m].responseType = "text";
 requesta[m].onload = () => {
   if (requesta[m].readyState === requesta[m].DONE) {
@@ -2210,8 +2221,21 @@ case '"小手指"':
 case '"飯能"':
 	dataa[m] = "飯";
 	break ;
+case '"湘南台"':
+	dataa[m] = "湘";
+	break ;
+case '"海老名"':
+	dataa[m] = "海";
+	break ;
+case '"西谷"':
+	dataa[m] = "谷";
+	break ;
 default:
+if ( des2 == '33' ){
 	dataa[m] = "副";
+} else {
+	dataa[m] = "相";
+}
         break ;
 }
 localStorage.setItem( unban2 , dataa[m] );
@@ -2323,6 +2347,14 @@ case 'null':
 //行先設定
       unban1 = JSON.stringify(data2.trains[n].operation_number) ;
       des= JSON.stringify(data2.trains[n].destination_station_code) ;
+
+if ( localStorage.getItem( unban1 + 'time' ) != null ){
+	 if( localStorage.getItem( unban1 + 'time' ) -(- 90) <= now ){
+		
+		localStorage.removeItem( unban1 );
+		localStorage.removeItem( unban1 + 'time' );
+	} 
+	}
 	switch (des) {
 case '33':
 	des = "副";
@@ -2612,13 +2644,6 @@ if ( delay == "0"){
 
       info =  des + unban +  sha + hensei ;
 
-if ( localStorage.getItem( unban + 'time' ) != null ){
-	 if( localStorage.getItem( unban + 'time' ) -(- 90) <= now ){
-		
-		localStorage.removeItem( unban );
-		localStorage.removeItem( unban + 'time' );
-	} 
-	}
 	nameText = 0;
 
 	var target;
