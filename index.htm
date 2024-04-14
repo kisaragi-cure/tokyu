@@ -2175,7 +2175,7 @@ requesta[m] = new XMLHttpRequest();
 if ( des2 == '33' ){
 requesta[m].open("GET", "https://timetable-api.tokyuapp.com/lines/26001/trains/" + unban2 + "/directions/up/kinds/" + kind3 + "/delays/0/sections/2", true);
 } else {
-requesta[m].open("GET", "https://timetable-api.tokyuapp.com/lines/26001/trains/" + unban2 + "/directions/down/kinds/" + kind3 + "/delays/0/sections/2", true);
+requesta[m].open("GET", "https://timetable-api.tokyuapp.com/lines/26001/trains/" + unban2 + "/directions/down/kinds/" + kind3 + "/delays/0/sections/35", true);
 }
 requesta[m].responseType = "text";
 requesta[m].onload = () => {
@@ -2423,6 +2423,10 @@ case '108':
 	break;
 case '111':
 	des = "相";
+if ( localStorage.getItem( unban1) == null ){
+} else {
+des = localStorage.getItem( unban1) ;
+}
 	break;
 case '129':
 	des = "蒲";
@@ -2935,7 +2939,7 @@ case ('57'):
 
 
 //ここから南北線処理
-if ( des == '南' || des == '三' ) {
+if ( des == '南' || des == '三' || des == '相' ) {
 N[q2] = n;
 q2 ++ ;
 
@@ -3018,7 +3022,11 @@ k = N[m] ;
 unban2 = JSON.stringify(data2.trains[k].operation_number) ;
 des2= JSON.stringify(data2.trains[k].destination_station_code) ;
 requesta[m] = new XMLHttpRequest();
+if ( des2 == '54' || des2 == '67' ){
 requesta[m].open("GET", "https://timetable-api.tokyuapp.com/lines/26002/trains/" + unban2 + "/directions/up/kinds/" + kind3 + "/delays/0/sections/65", true);
+} else {
+requesta[m].open("GET", "https://timetable-api.tokyuapp.com/lines/26002/trains/" + unban2 + "/directions/down/kinds/" + kind3 + "/delays/0/sections/35", true);
+}
 requesta[m].responseType = "text";
 requesta[m].onload = () => {
   if (requesta[m].readyState === requesta[m].DONE) {
@@ -3027,6 +3035,18 @@ dataa[m] = JSON.parse(requesta[m].responseText);
       dataa[m] = JSON.stringify(dataa[m].destination) ;
       console.log(  dataa[m] );
 	switch (dataa[m]) {
+case '"海老名"':
+	dataa[m] = "海";
+	break ;
+case '"湘南台"':
+	dataa[m] = "湘";
+	break ;
+case '"大和"':
+	dataa[m] = "大";
+	break ;
+case '"西谷"':
+	dataa[m] = "谷";
+	break ;
 case '"西高島平"':
 	dataa[m] = "西";
 	break ;
@@ -3045,8 +3065,10 @@ case '"赤羽岩淵"':
 default:
 	if ( des2 == 54 ){
 	dataa[m] = "三";
-} else {
+} else　if ( des2 == 67 ) {
 	dataa[m] = "南";
+} else {
+	dataa[m] = "相";
 }
         break ;
 }
