@@ -3207,6 +3207,7 @@ case 'null':
 	break;
 }
 
+      unban1 = JSON.stringify(data3.trains[n].operation_number) ;
 //行先設定
       des= JSON.stringify(data3.trains[n].destination_station_code) ;
 	switch (des) {
@@ -3283,7 +3284,6 @@ case '0':
 }
 
       unban = JSON.stringify(data3.trains[n].operation_number) ;
-      unban1 = JSON.stringify(data3.trains[n].operation_number) ;
       sha= JSON.stringify(data3.trains[n].affiliation) ;
 //所属不一致判定
 if (sha != 'null'){
