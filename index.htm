@@ -3160,6 +3160,7 @@ let info = '';
 
       let kind = '';
       let unban = '';
+      let unban1 = '';
       let des = '';
       let stid = '';
       let scid = '';
@@ -3207,8 +3208,8 @@ case 'null':
 	break;
 }
 
-      unban1 = JSON.stringify(data3.trains[n].operation_number) ;
 //行先設定
+      unban1 = JSON.stringify(data3.trains[n].operation_number) ;
       des= JSON.stringify(data3.trains[n].destination_station_code) ;
 	switch (des) {
 case '33':
