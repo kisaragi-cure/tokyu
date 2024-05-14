@@ -13,6 +13,7 @@ body{
 	background-repeat: no-repeat;
 	background-image: url(toyoko01.png);
 	background-size:2045px;
+	font-family:'BIZ UDゴシック', Menlo, Consolas, Monaco, monospace, sans-serif ;
 	zoom: 90%;
 }
 
@@ -36,10 +37,9 @@ background-color: #ffffff;
 
 
   <body>
-<font face="BIZ UDゴシック,メイリオ,ＭＳ ゴシック">
 
 <nobr>
-<p>渋谷エリア(渋谷～横浜・新横浜)　　　　　[更新間隔：15秒]　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(C)Cure_kisaragi 2024 / Ver.1.80 </p>
+<p>渋谷エリア(渋谷～横浜・新横浜)　　　　　[更新間隔：15秒]　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　(C)Cure_kisaragi 2024 / Ver.1.81 </p>
 <br>
 <br>
 <br>
@@ -206,6 +206,7 @@ background-color: #ffffff;
 <div id="ty07-4" style="position: absolute; top: 636px; left:561px; font-size:13pt; "></div>
 <div id="ty07-4b" style="position: absolute; top: 636px; left:581px; font-size:13pt; "></div>
 <div id="ty07-4c" style="position: absolute; top: 636px; left:681px; font-size:13pt; color:#FF0000; "></div>
+<div style="position: absolute; top: 690px; left:580px; font-size:22pt"><input type="button" id = "dento" value="長津田エリア" ></div>
 
 <!自由が丘-田園調布>
 <div id="ty07-08d" style="position: absolute; top: -100px; left:-100px;"><input type="text"  id = "ty07-08" disabled / name="address" size="14" value=""　></div>
@@ -667,6 +668,10 @@ document.getElementById("sotetsu").addEventListener("click", function () {
 
 document.getElementById("meguro").addEventListener("click", function () {
   location.replace("https://kisaragi-cure.github.io/okusawa/");
+}, false);
+
+document.getElementById("dento").addEventListener("click", function () {
+  location.replace("https://kisaragi-cure.github.io/takatsu/");
 }, false);
 
 document.getElementById("joho").addEventListener("click", function () {
@@ -2211,6 +2216,7 @@ requesta[m].onload = () => {
       unjo = JSON.stringify(dataa[m].delayReason) ;
       dataa[m] = JSON.stringify(dataa[m].destination) ;
 
+
 	switch (dataa[m]) {
 case '"新宿三丁目"':
 	dataa[m] = "丁";
@@ -2264,6 +2270,15 @@ if ( des2 == '33' ){
 	dataa[m] = "相";
 }
         break ;
+}
+}
+console.log( dataa[m]) ;
+
+if ( dataa[m] == undefined ){
+if ( des2 == '33' ){
+	dataa[m] = "副";
+} else {
+	dataa[m] = "相";
 }
 }
 
