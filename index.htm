@@ -2770,9 +2770,9 @@ if ( des == null || des == 'undefined' ){
       unban = JSON.stringify(data.trains[n].operation_number) ;
       unban = unban.replaceAll('"','') ;
 
-//行先情報の有効期限は25分に設定
+//行先情報の有効期限は20分に設定
 if ( localStorage.getItem( unban1 + 'sg' + 'time' ) !== null ){
-	 if( localStorage.getItem( unban1 + 'sg' + 'time' ) -(- 25) <= now ){
+	 if( localStorage.getItem( unban1 + 'sg' + 'time' ) -(- 20) <= now ){
 		localStorage.removeItem( unban1 + 'sg' );
 		localStorage.removeItem( unban1 + 'sg' + 'time' );
 	} 
@@ -2976,7 +2976,8 @@ case ('1016'):
 	target = document.getElementById('sg09-2ad');
 	doc2= document.getElementById("sg09-2");  
 	doc0= document.getElementById("sg09-2b");  
-	doc1= document.getElementById("sg09-2c");  
+	doc1= document.getElementById("sg09-2c");
+	des = '';
 	break ;
 	}
 	break ;
