@@ -3243,21 +3243,12 @@ unban2 = JSON.stringify(data.trains[k].operation_number) ;
 unban2 = unban2.replaceAll('"','') ;
 line2 = JSON.stringify(data.trains[k].line_id) ;
 
-if ( line2 == '26006' ){
-if ( unban2.substring(0,1) == '1' ){
-cars = 'true' ;
-} else {
-cars = 'false' ;
-}
-} else {
+
 cars = JSON.stringify(data.trains[k].up) ;
-}
+	
 if ( unjo1 == 'null' || unjo1 == null ){
 requesta[m] = new XMLHttpRequest();
 
-if (unban2 > 100){
-line2 = '26006';
-}
 if ( cars == 'true' ){
 requesta[m].open("GET", "https://timetable-api.tokyuapp.com/lines/26007/trains/" + unban2 + "/directions/up/kinds/" + '普' + "/delays/underfined/stations/1013", true);
 } else {
