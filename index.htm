@@ -3250,9 +3250,9 @@ if ( unjo1 == 'null' || unjo1 == null ){
 requesta[m] = new XMLHttpRequest();
 
 if ( cars == 'true' ){
-requesta[m].open("GET", "https://timetable-api.tokyuapp.com/lines/26007/trains/" + unban2 + "/directions/up/kinds/" + '普' + "/delays/underfined/stations/1013", true);
-} else {
 requesta[m].open("GET", "https://timetable-api.tokyuapp.com/lines/26007/trains/" + unban2 + "/directions/down/kinds/" + '普' + "/delays/underfined/stations/1013", true);
+} else {
+requesta[m].open("GET", "https://timetable-api.tokyuapp.com/lines/26007/trains/" + unban2 + "/directions/up/kinds/" + '普' + "/delays/underfined/stations/1013", true);
 }
 requesta[m].responseType = "text";
 requesta[m].onload = () => {
