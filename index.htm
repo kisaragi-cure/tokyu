@@ -2674,6 +2674,7 @@ let info = '';
       let des2 = '';
       let stid = '';
       let scid = '';
+      let scid2 = '';
       let trid = '';
       let delay = '';
       let line = '';
@@ -2990,6 +2991,7 @@ case ('784'):
 	doc2= document.getElementById("sg10-1");  
 	doc0= document.getElementById("sg10-1b");  
 	doc1= document.getElementById("sg10-1c");  
+	break ;
 	}
 if ( des == '下'){
 	des = '';
@@ -3018,7 +3020,7 @@ case ('210'):
 	target = document.getElementById('sg02-01d');
 	doc2= document.getElementById("sg02-1e");  
 	doc0= document.getElementById("sg02-01b");  
-	doc1= document.getElementById("sg02-01c");  
+	doc1= document.getElementById("sg02-01c"); 
 	break ;
 
 case ('202'):
@@ -3026,7 +3028,7 @@ case ('202'):
 	target = document.getElementById('sg02-03d');
 	doc2= document.getElementById("sg02-3e");  
 	doc0= document.getElementById("sg02-03b");  
-	doc1= document.getElementById("sg02-03c");  
+	doc1= document.getElementById("sg02-03c"); 
 	if ( des == '軒'){
 	des = '';
 	}
@@ -3061,7 +3063,7 @@ case ('204'):
 	target = document.getElementById('sg04-05d');
 	doc2= document.getElementById("sg04-5e");  
 	doc0= document.getElementById("sg04-05b");  
-	doc1= document.getElementById("sg04-05c"); 
+	doc1= document.getElementById("sg04-05c");
 	break ;
 
 case ('213'):
@@ -3069,7 +3071,7 @@ case ('213'):
 	target = document.getElementById('sg05-04d');
 	doc2= document.getElementById("sg05-4e");  
 	doc0= document.getElementById("sg05-04b");  
-	doc1= document.getElementById("sg05-04c");  
+	doc1= document.getElementById("sg05-04c"); 
 	break ;
 
 case ('205'):
@@ -3101,7 +3103,7 @@ case ('215'):
 	target = document.getElementById('sg07-06d');
 	doc2= document.getElementById("sg07-6e");  
 	doc0= document.getElementById("sg07-06b");  
-	doc1= document.getElementById("sg07-06c");  
+	doc1= document.getElementById("sg07-06c"); 
 	break ;
 
 case ('207'):
@@ -3150,7 +3152,6 @@ case ('218'):
 	doc2= document.getElementById("sg10-9e");  
 	doc0= document.getElementById("sg10-09b");  
 	doc1= document.getElementById("sg10-09c");
-	des = '';
 	break ;
 
 }
@@ -3242,13 +3243,23 @@ k = N[m] ;
 unban2 = JSON.stringify(data.trains[k].operation_number) ;
 unban2 = unban2.replaceAll('"','') ;
 line2 = JSON.stringify(data.trains[k].line_id) ;
+scid2 = JSON.stringify(data.trains[k].section_id) ;
 
-
+if ( scid2 > 209 ){
+cars = 'true' ;
+} else if ( scid2 > 199 ) {
+cars = 'false' ;
+} else {
 cars = JSON.stringify(data.trains[k].up) ;
-	
+}
+
+
 if ( unjo1 == 'null' || unjo1 == null ){
 requesta[m] = new XMLHttpRequest();
 
+if (unban2 > 100){
+line2 = '26006';
+}
 if ( cars == 'true' ){
 requesta[m].open("GET", "https://timetable-api.tokyuapp.com/lines/26007/trains/" + unban2 + "/directions/up/kinds/" + '普' + "/delays/underfined/stations/1013", true);
 } else {
